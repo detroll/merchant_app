@@ -9,7 +9,7 @@ one:
   quantity: 1
 
 two:
-  name: jeans
+  name: ProPlan
   category_id: 1
   brand_id: 1
   description: MyText
