@@ -8,6 +8,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem "paperclip", "~> 4.3"
+gem 'starter_generators'
+gem 'font-awesome-rails'
+gem 'annotate'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
