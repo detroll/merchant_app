@@ -3,6 +3,18 @@ require 'test_helper'
 class ProductTest < ActiveSupport::TestCase
   test "Product fields should not be empty" do
     product = Product.new
+    product.save
+  end
+
+   test "product attributes must not be empty" do
+    product = Product.new
+    product.save
+
+    assert product.errors[:name].any?, "name must be present"
+    assert product.errors[:description].any?, "description must be present"
+    assert product.errors[:category_id].any?, "category must be present"
+    assert product.errors[:brand_id].any?, "brand must be present"
+
     assert_not product.save, "saved product with empty attributes"
   end
   
