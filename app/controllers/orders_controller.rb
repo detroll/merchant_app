@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 include CurrentCart
   before_action :set_cart, only: [:new, :create]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   
   # GET /orders
@@ -34,10 +34,14 @@ include CurrentCart
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        format.html { redirect_to storefront_index_url, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
