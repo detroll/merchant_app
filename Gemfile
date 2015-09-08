@@ -23,8 +23,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'sqlite3'
-
 end
+
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro', '>= 1.0.0.rc1'
