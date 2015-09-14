@@ -11,6 +11,7 @@ gem "paperclip", "~> 4.3"
 gem 'starter_generators'
 gem 'font-awesome-rails'
 gem 'annotate'
+gem 'aws-sdk', '<2'
 
 group :production do
   gem 'pg'
