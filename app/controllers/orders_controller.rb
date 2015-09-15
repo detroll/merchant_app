@@ -39,6 +39,10 @@ include CurrentCart
 
     respond_to do |format|
       if @order.save
+        # Deliver order confirmation e-mail
+        OrderConfirmation.send_order_confirmation(current_user, @order).deliver_now
+
+        #Reset the session cart to the be empty
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         format.html { redirect_to storefront_index_url, notice: 'Order was successfully created.' }
